@@ -48,33 +48,33 @@ namespace Thirdweb
 
         private void OnEnable()
         {
-            activeChainProperty = serializedObject.FindProperty("activeChain");
-            supportedChainsProperty = serializedObject.FindProperty("supportedChains");
-            clientIdProperty = serializedObject.FindProperty("clientId");
-            bundleIdOverrideProperty = serializedObject.FindProperty("bundleIdOverride");
-            initializeOnAwakeProperty = serializedObject.FindProperty("initializeOnAwake");
-            showDebugLogsProperty = serializedObject.FindProperty("showDebugLogs");
-            thirdwebConfigProperty = serializedObject.FindProperty("thirdwebConfig");
-            appNameProperty = serializedObject.FindProperty("appName");
-            appDescriptionProperty = serializedObject.FindProperty("appDescription");
-            appIconsProperty = serializedObject.FindProperty("appIcons");
-            appUrlProperty = serializedObject.FindProperty("appUrl");
-            storageIpfsGatewayUrlProperty = serializedObject.FindProperty("storageIpfsGatewayUrl");
-            relayerUrlProperty = serializedObject.FindProperty("relayerUrl");
-            forwarderAddressProperty = serializedObject.FindProperty("forwarderAddress");
-            forwarderDomainOverrideProperty = serializedObject.FindProperty("forwarderDomainOverride");
-            forwaderVersionOverrideProperty = serializedObject.FindProperty("forwaderVersionOverride");
-            walletConnectProjectIdProperty = serializedObject.FindProperty("walletConnectProjectId");
-            walletConnectExplorerRecommendedWalletIdsProperty = serializedObject.FindProperty("walletConnectExplorerRecommendedWalletIds");
-            factoryAddressProperty = serializedObject.FindProperty("factoryAddress");
-            gaslessProperty = serializedObject.FindProperty("gasless");
-            deployOnSignProperty = serializedObject.FindProperty("deployOnSign");
-            bundlerUrlProperty = serializedObject.FindProperty("bundlerUrl");
-            paymasterUrlProperty = serializedObject.FindProperty("paymasterUrl");
-            entryPointAddressProperty = serializedObject.FindProperty("entryPointAddress");
-            WalletConnectPrefabProperty = serializedObject.FindProperty("WalletConnectPrefab");
-            MetamaskPrefabProperty = serializedObject.FindProperty("MetamaskPrefab");
-            EmbeddedWalletPrefabProperty = serializedObject.FindProperty("EmbeddedWalletPrefab");
+            activeChainProperty = serializedObject.FindProperty("_activeChain");
+            supportedChainsProperty = serializedObject.FindProperty("_supportedChains");
+            clientIdProperty = serializedObject.FindProperty("_clientId");
+            bundleIdOverrideProperty = serializedObject.FindProperty("_defaultBundleIdOverride");
+            initializeOnAwakeProperty = serializedObject.FindProperty("_initializeOnAwake");
+            showDebugLogsProperty = serializedObject.FindProperty("_showDebugLogs");
+            thirdwebConfigProperty = serializedObject.FindProperty("_thirdwebConfig");
+            appNameProperty = serializedObject.FindProperty("_appName");
+            appDescriptionProperty = serializedObject.FindProperty("_appDescription");
+            appIconsProperty = serializedObject.FindProperty("_appIcons");
+            appUrlProperty = serializedObject.FindProperty("_appUrl");
+            storageIpfsGatewayUrlProperty = serializedObject.FindProperty("_storageIpfsGatewayUrl");
+            relayerUrlProperty = serializedObject.FindProperty("_relayerUrl");
+            forwarderAddressProperty = serializedObject.FindProperty("_forwarderAddress");
+            forwarderDomainOverrideProperty = serializedObject.FindProperty("_forwarderDomainOverride");
+            forwaderVersionOverrideProperty = serializedObject.FindProperty("_forwaderVersionOverride");
+            walletConnectProjectIdProperty = serializedObject.FindProperty("_walletConnectProjectId");
+            walletConnectExplorerRecommendedWalletIdsProperty = serializedObject.FindProperty("_walletConnectExplorerRecommendedWalletIds");
+            factoryAddressProperty = serializedObject.FindProperty("_factoryAddress");
+            gaslessProperty = serializedObject.FindProperty("_gasless");
+            deployOnSignProperty = serializedObject.FindProperty("_deployOnSign");
+            bundlerUrlProperty = serializedObject.FindProperty("_bundlerUrl");
+            paymasterUrlProperty = serializedObject.FindProperty("_paymasterUrl");
+            entryPointAddressProperty = serializedObject.FindProperty("_entryPointAddress");
+            WalletConnectPrefabProperty = serializedObject.FindProperty("_walletConnectPrefab");
+            MetamaskPrefabProperty = serializedObject.FindProperty("_metamaskPrefab");
+            EmbeddedWalletPrefabProperty = serializedObject.FindProperty("_embeddedWalletPrefab");
 
             supportedChainsList = new ReorderableList(serializedObject, supportedChainsProperty, true, true, true, true);
             supportedChainsList.drawHeaderCallback = rect =>
@@ -96,12 +96,12 @@ namespace Thirdweb
                 EditorGUI.BeginProperty(rect, GUIContent.none, element);
 
                 EditorGUI.LabelField(identifierRect, "Identifier");
-                EditorGUI.PropertyField(identifierRect, element.FindPropertyRelative("identifier"), GUIContent.none);
+                EditorGUI.PropertyField(identifierRect, element.FindPropertyRelative("_identifier"), GUIContent.none);
 
                 EditorGUI.LabelField(chainIdRect, "Chain ID");
-                EditorGUI.PropertyField(chainIdRect, element.FindPropertyRelative("chainId"), GUIContent.none);
+                EditorGUI.PropertyField(chainIdRect, element.FindPropertyRelative("_chainId"), GUIContent.none);
 
-                var rpcOverrideProperty = element.FindPropertyRelative("rpcOverride");
+                var rpcOverrideProperty = element.FindPropertyRelative("_rpcOverride");
                 EditorGUI.LabelField(rpcOverrideRect, "RPC Override (Optional)");
                 EditorGUI.BeginChangeCheck();
                 EditorGUI.PropertyField(rpcOverrideRect, rpcOverrideProperty, GUIContent.none);

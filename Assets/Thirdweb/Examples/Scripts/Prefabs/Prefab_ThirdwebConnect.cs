@@ -9,7 +9,7 @@ using UnityEngine.UI;
 using System.Numerics;
 using RotaryHeart.Lib.SerializableDictionary;
 
-public class Prefab_ConnectWallet : MonoBehaviour
+public class Prefab_ThirdwebConnect : MonoBehaviour
 {
     [Serializable]
     public class NetworkIcon
@@ -66,9 +66,9 @@ public class Prefab_ConnectWallet : MonoBehaviour
         _address = null;
         _password = null;
 
-        _currentChainData = ThirdwebManager.Instance.supportedChains.Find(x => x.identifier == ThirdwebManager.Instance.activeChain);
+        _currentChainData = ThirdwebManager.Instance.GetSupportedChainDataById(ThirdwebManager.Instance.ActiveChain);
 
-        networkSwitchButton.interactable = ThirdwebManager.Instance.supportedChains.Count > 1;
+        networkSwitchButton.interactable = ThirdwebManager.Instance.SupportedChains.Count > 1;
 
         foreach (var walletProvider in walletProviderUI)
             walletProvider.Value.SetActive(enabledWalletProviders.Contains(walletProvider.Key));
@@ -82,8 +82,8 @@ public class Prefab_ConnectWallet : MonoBehaviour
     {
         _password = password;
         var wc = useSmartWallets
-            ? new WalletConnection(provider: WalletProvider.SmartWallet, chainId: BigInteger.Parse(_currentChainData.chainId), password: _password, personalWallet: WalletProvider.LocalWallet)
-            : new WalletConnection(provider: WalletProvider.LocalWallet, chainId: BigInteger.Parse(_currentChainData.chainId), password: _password);
+            ? new WalletConnection(provider: WalletProvider.SmartWallet, chainId: BigInteger.Parse(_currentChainData.ChainId), password: _password, personalWallet: WalletProvider.LocalWallet)
+            : new WalletConnection(provider: WalletProvider.LocalWallet, chainId: BigInteger.Parse(_currentChainData.ChainId), password: _password);
         Connect(wc);
     }
 
@@ -92,13 +92,13 @@ public class Prefab_ConnectWallet : MonoBehaviour
         var wc = useSmartWallets
             ? new WalletConnection(
                 provider: WalletProvider.SmartWallet,
-                chainId: BigInteger.Parse(_currentChainData.chainId),
+                chainId: BigInteger.Parse(_currentChainData.ChainId),
                 authOptions: new AuthOptions(Enum.Parse<AuthProvider>(authProviderStr)),
                 personalWallet: WalletProvider.EmbeddedWallet
             )
             : new WalletConnection(
                 provider: WalletProvider.EmbeddedWallet,
-                chainId: BigInteger.Parse(_currentChainData.chainId),
+                chainId: BigInteger.Parse(_currentChainData.ChainId),
                 authOptions: new AuthOptions(Enum.Parse<AuthProvider>(authProviderStr))
             );
         Connect(wc);
@@ -109,14 +109,14 @@ public class Prefab_ConnectWallet : MonoBehaviour
         var wc = useSmartWallets
             ? new WalletConnection(
                 provider: WalletProvider.SmartWallet,
-                chainId: BigInteger.Parse(_currentChainData.chainId),
+                chainId: BigInteger.Parse(_currentChainData.ChainId),
                 email: emailInput.text,
                 authOptions: new AuthOptions(AuthProvider.EmailOTP),
                 personalWallet: WalletProvider.EmbeddedWallet
             )
             : new WalletConnection(
                 provider: WalletProvider.EmbeddedWallet,
-                chainId: BigInteger.Parse(_currentChainData.chainId),
+                chainId: BigInteger.Parse(_currentChainData.ChainId),
                 email: emailInput.text,
                 authOptions: new AuthOptions(AuthProvider.EmailOTP)
             );
@@ -126,8 +126,8 @@ public class Prefab_ConnectWallet : MonoBehaviour
     public void ConnectExternal(string walletProviderStr)
     {
         var wc = useSmartWallets
-            ? new WalletConnection(provider: WalletProvider.SmartWallet, chainId: BigInteger.Parse(_currentChainData.chainId), personalWallet: Enum.Parse<WalletProvider>(walletProviderStr))
-            : new WalletConnection(provider: Enum.Parse<WalletProvider>(walletProviderStr), chainId: BigInteger.Parse(_currentChainData.chainId));
+            ? new WalletConnection(provider: WalletProvider.SmartWallet, chainId: BigInteger.Parse(_currentChainData.ChainId), personalWallet: Enum.Parse<WalletProvider>(walletProviderStr))
+            : new WalletConnection(provider: Enum.Parse<WalletProvider>(walletProviderStr), chainId: BigInteger.Parse(_currentChainData.ChainId));
         Connect(wc);
     }
 
@@ -191,8 +191,8 @@ public class Prefab_ConnectWallet : MonoBehaviour
                 walletImage.sprite = currentWalletIcon;
         }
 
-        currentNetworkIcon.sprite = networkIcons.Find(x => x.chain == _currentChainData.identifier)?.sprite ?? networkIcons[0].sprite;
-        currentNetworkText.text = PrettifyNetwork(_currentChainData.identifier);
+        currentNetworkIcon.sprite = networkIcons.Find(x => x.chain == _currentChainData.Identifier)?.sprite ?? networkIcons[0].sprite;
+        currentNetworkText.text = PrettifyNetwork(_currentChainData.Identifier);
 
         onConnected.Invoke(_address);
     }
@@ -204,17 +204,17 @@ public class Prefab_ConnectWallet : MonoBehaviour
         foreach (Transform item in switchNetworkContent)
             Destroy(item.gameObject);
 
-        foreach (var chain in ThirdwebManager.Instance.supportedChains)
+        foreach (var chain in ThirdwebManager.Instance.SupportedChains)
         {
-            if (chain.identifier == _currentChainData.identifier)
+            if (chain.Identifier == _currentChainData.Identifier)
                 continue;
 
-            var chainData = ThirdwebManager.Instance.supportedChains.Find(x => x.identifier == chain.identifier);
+            var chainData = ThirdwebManager.Instance.GetSupportedChainDataById(chain.Identifier);
             var chainButton = Instantiate(switchNetworkButtonPrefab, switchNetworkContent);
             var chainButtonImage = chainButton.transform.Find("Image_Network");
             var chainButtonText = chainButton.transform.Find("Text_Network");
-            chainButtonText.GetComponentInChildren<TMP_Text>().text = PrettifyNetwork(chain.identifier);
-            chainButtonImage.GetComponentInChildren<Image>().sprite = networkIcons.Find(x => x.chain == chain.identifier)?.sprite ?? networkIcons[0].sprite;
+            chainButtonText.GetComponentInChildren<TMP_Text>().text = PrettifyNetwork(chain.Identifier);
+            chainButtonImage.GetComponentInChildren<Image>().sprite = networkIcons.Find(x => x.chain == chain.Identifier)?.sprite ?? networkIcons[0].sprite;
             chainButton.GetComponent<Button>().onClick.RemoveAllListeners();
             chainButton.GetComponent<Button>().onClick.AddListener(() => SwitchNetwork(chainData));
         }
@@ -222,13 +222,13 @@ public class Prefab_ConnectWallet : MonoBehaviour
 
     private async void SwitchNetwork(ChainData chainData)
     {
-        ThirdwebDebug.Log($"Switching to network: {chainData.identifier}...");
+        ThirdwebDebug.Log($"Switching to network: {chainData.Identifier}...");
         try
         {
-            await ThirdwebManager.Instance.SDK.wallet.SwitchNetwork(BigInteger.Parse(chainData.chainId));
-            ThirdwebManager.Instance.activeChain = chainData.identifier;
-            _currentChainData = ThirdwebManager.Instance.supportedChains.Find(x => x.identifier == ThirdwebManager.Instance.activeChain);
-            ThirdwebDebug.Log($"Switched to network: {chainData.identifier}");
+            await ThirdwebManager.Instance.SDK.wallet.SwitchNetwork(BigInteger.Parse(chainData.ChainId));
+            ThirdwebManager.Instance.SwitchActiveChain(chainData.Identifier);
+            _currentChainData = ThirdwebManager.Instance.GetSupportedChainDataById(ThirdwebManager.Instance.ActiveChain);
+            ThirdwebDebug.Log($"Switched to network: {chainData.Identifier}");
             onSwitchNetwork?.Invoke();
             PostConnect();
         }

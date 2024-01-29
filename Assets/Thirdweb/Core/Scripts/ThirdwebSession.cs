@@ -241,7 +241,7 @@ namespace Thirdweb
             {
                 chainId = BigInteger.Parse(currentNetwork.chainId).ToHex(false, true) ?? BigInteger.Parse(chainId.ToString()).ToHex(false, true),
                 blockExplorerUrls = explorerUrls.ToArray(),
-                chainName = currentNetwork.name ?? ThirdwebManager.Instance.activeChain,
+                chainName = currentNetwork.name ?? ThirdwebManager.Instance.ActiveChain,
                 iconUrls = new string[] { currentNetwork.icon },
                 nativeCurrency = new ThirdwebNativeCurrency()
                 {

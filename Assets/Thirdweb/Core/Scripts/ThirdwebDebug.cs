@@ -3,32 +3,48 @@ using UnityEngine;
 
 namespace Thirdweb
 {
-    public static class ThirdwebDebug
-    {
-        public static bool IsEnabled => ThirdwebManager.Instance != null && ThirdwebManager.Instance.showDebugLogs;
+	public static class ThirdwebDebug
+	{
+		#region Properties
 
-        public static void Log(object message)
-        {
-            if (IsEnabled)
-                Debug.Log(message);
-        }
+		public static bool IsEnabled => ThirdwebManager.Instance != null && ThirdwebManager.Instance.ShowDebugLogs;
 
-        public static void LogWarning(object message)
-        {
-            if (IsEnabled)
-                Debug.LogWarning(message);
-        }
+		#endregion
 
-        public static void LogError(object message)
-        {
-            if (IsEnabled)
-                Debug.LogError(message);
-        }
+		#region Public Methods
 
-        public static void LogException(Exception exception)
-        {
-            if (IsEnabled)
-                Debug.LogException(exception);
-        }
-    }
+		public static void Log(object message)
+		{
+			if(IsEnabled)
+			{
+				Debug.Log(message);
+			}
+		}
+
+		public static void LogWarning(object message)
+		{
+			if(IsEnabled)
+			{
+				Debug.LogWarning(message);
+			}
+		}
+
+		public static void LogError(object message)
+		{
+			if(IsEnabled)
+			{
+				Debug.LogError(message);
+			}
+		}
+
+		public static void LogException(Exception exception)
+		{
+			if(IsEnabled)
+			{
+				Debug.LogException(exception);
+			}
+		}
+
+		#endregion
+	}
 }

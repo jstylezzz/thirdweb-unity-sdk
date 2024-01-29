@@ -394,7 +394,9 @@ namespace Thirdweb
         public static string GetBundleId()
         {
             return ThirdwebManager.Instance.SDK?.session?.Options.bundleId
-                ?? (string.IsNullOrEmpty(ThirdwebManager.Instance.bundleIdOverride) ? Application.identifier.ToLower() : ThirdwebManager.Instance.bundleIdOverride);
+                ?? (string.IsNullOrEmpty(ThirdwebManager.Instance.BundleIdOverride) 
+                    ? Application.identifier.ToLower() 
+                    : ThirdwebManager.Instance.BundleIdOverride);
         }
 
         public static string GetRuntimePlatform()
