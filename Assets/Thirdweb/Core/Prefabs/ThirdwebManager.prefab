@@ -44,75 +44,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d9559a79e304f44b5ac4d726f1ee68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeChain: goerli
-  supportedChains:
-  - identifier: ethereum
-    chainId: 1
-    rpcOverride: 
-  - identifier: goerli
-    chainId: 5
-    rpcOverride: 
-  - identifier: polygon
-    chainId: 137
-    rpcOverride: 
-  - identifier: mumbai
-    chainId: 80001
-    rpcOverride: 
-  - identifier: fantom
-    chainId: 250
-    rpcOverride: 
-  - identifier: fantom-testnet
-    chainId: 4002
-    rpcOverride: 
-  - identifier: avalanche
-    chainId: 43114
-    rpcOverride: 
-  - identifier: avalanche-fuji
-    chainId: 43113
-    rpcOverride: 
-  - identifier: optimism
-    chainId: 10
-    rpcOverride: 
-  - identifier: optimism-goerli
-    chainId: 420
-    rpcOverride: 
-  - identifier: arbitrum
-    chainId: 42161
-    rpcOverride: 
-  - identifier: arbitrum-goerli
-    chainId: 421613
-    rpcOverride: 
-  - identifier: binance
-    chainId: 56
-    rpcOverride: 
-  - identifier: binance-testnet
-    chainId: 97
-    rpcOverride: 
-  - identifier: sepolia
-    chainId: 11155111
-    rpcOverride: 
-  clientId: 
-  initializeOnAwake: 1
-  showDebugLogs: 1
-  appName: 
-  appDescription: 
-  appIcons: []
-  appUrl: 
-  storageIpfsGatewayUrl: 
-  relayerUrl: 
-  forwarderAddress: 
-  forwarderDomainOverride: 
-  forwaderVersionOverride: 
-  magicLinkApiKey: 
-  walletConnectProjectId: 
-  walletConnectExplorerRecommendedWalletIds: []
-  paperClientId: 
-  factoryAddress: 
-  gasless: 0
-  bundlerUrl: 
-  paymasterUrl: 
-  entryPointAddress: 
-  WalletConnectPrefab: {fileID: 3202619366221042887, guid: c8c0099339b6ef54f87b1f049c5eb74f, type: 3}
-  MetamaskPrefab: {fileID: 3503421935870801903, guid: f09c6d17b08bed346bec9906a7f17092, type: 3}
-  PaperPrefab: {fileID: 3202619366221042887, guid: e7531d4af8ba7a246bfd6b63c9a1e2a3, type: 3}
-  EmbeddedWalletPrefab: {fileID: 3202619366221042887, guid: bef3cf6334b95f14883fb1b8095a0960, type: 3}
+  _activeChain: goerli
+  _supportedChains:
+  - _identifier: ethereum
+    _chainId: 1
+    _rpcOverride: 
+  - _identifier: goerli
+    _chainId: 5
+    _rpcOverride: 
+  - _identifier: polygon
+    _chainId: 137
+    _rpcOverride: 
+  - _identifier: mumbai
+    _chainId: 80001
+    _rpcOverride: 
+  - _identifier: fantom
+    _chainId: 250
+    _rpcOverride: 
+  - _identifier: fantom-testnet
+    _chainId: 4002
+    _rpcOverride: 
+  - _identifier: avalanche
+    _chainId: 43114
+    _rpcOverride: 
+  - _identifier: avalanche-fuji
+    _chainId: 43113
+    _rpcOverride: 
+  - _identifier: optimism
+    _chainId: 10
+    _rpcOverride: 
+  - _identifier: optimism-goerli
+    _chainId: 420
+    _rpcOverride: 
+  - _identifier: arbitrum
+    _chainId: 42161
+    _rpcOverride: 
+  - _identifier: arbitrum-goerli
+    _chainId: 421613
+    _rpcOverride: 
+  - _identifier: binance
+    _chainId: 56
+    _rpcOverride: 
+  - _identifier: binance-testnet
+    _chainId: 97
+    _rpcOverride: 
+  - _identifier: sepolia
+    _chainId: 11155111
+    _rpcOverride: 
+  _clientId: 
+  _initializeOnAwake: 1
+  _showDebugLogs: 1
+  _defaultBundleIdOverride: 
+  _thirdwebConfig: {fileID: 0}
+  _appName: 
+  _appDescription: 
+  _appIcons: []
+  _appUrl: 
+  _storageIpfsGatewayUrl: 
+  _relayerUrl: 
+  _forwarderAddress: 
+  _forwarderDomainOverride: 
+  _forwaderVersionOverride: 
+  _walletConnectProjectId: 
+  _overrideWalletConnectExplorerRecommendedWalletIds: []
+  _factoryAddress: 
+  _gasless: 0
+  _deployOnSign: 0
+  _bundlerUrl: 
+  _paymasterUrl: 
+  _entryPointAddress: 
+  _walletConnectPrefab: {fileID: 3202619366221042887, guid: c8c0099339b6ef54f87b1f049c5eb74f, type: 3}
+  _metamaskPrefab: {fileID: 3503421935870801903, guid: f09c6d17b08bed346bec9906a7f17092, type: 3}
+  _embeddedWalletPrefab: {fileID: 3202619366221042887, guid: bef3cf6334b95f14883fb1b8095a0960, type: 3}

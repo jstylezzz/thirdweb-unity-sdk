@@ -31,12 +31,71 @@ namespace Thirdweb
 
 		#endregion
 
+		#region Consts
+
+		private const string DefaultAppURL = "https://thirdweb.com";
+		private const string DefaultWalletConnectProjectId = "145769e410f16970a79ff77b2d89a1e0";
+		private const string DefaultAppDescription = "thirdweb powered dApp";
+		private const string DefaultAppName = "thirdweb powered dApp";
+		
+		private static readonly string[] DefaultAppIcons = 
+		{
+			"https://thirdweb.com/favicon.ico"
+		};
+
+		private static readonly string[] DefaultWalletConnectExplorerRecommendedWalletIds = 
+		{
+			"c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96", // metamask
+			"4622a2b2d6af1c9844944291e5e7351a6aa24cd7b23099efac1b2fd875da31a0", // trustwallet
+			"225affb176778569276e484e1b92637ad061b01e13a048b35a9d280c3b58970f", // safe
+			"1ae92b26df02f0abca6304df07debccd18262fdf5fe82daa81593582dac9a369", // rainbow
+			"a797aa35c0fadbfc1a53e7f675162ed5226968b44a19ee3d24385c64d1d3c393", // phantom
+			"c03dfee351b6fcc421b4494ea33b9d4b92a984f87aa76d1663bb28705e95034a", // uniswap
+			"ecc4036f814562b41a5268adc86270fba1365471402006302e70169465b7ac18", // zerion
+			"ef333840daf915aafdc4a004525502d6d49d77bd9c65e0642dbaefb3c2893bef", // imtoken
+			"bc949c5d968ae81310268bf9193f9c9fb7bb4e1283e1284af8f2bd4992535fd6", // argent
+			"74f8092562bd79675e276d8b2062a83601a4106d30202f2d509195e30e19673d", // spot
+			"afbd95522f4041c71dd4f1a065f971fd32372865b416f95a0b1db759ae33f2a7", // omni
+			"f2436c67184f158d1beda5df53298ee84abfc367581e4505134b5bcf5f46697d", // crypto.com
+			"20459438007b75f4f4acb98bf29aa3b800550309646d375da5fd4aac6c2a2c66", // tokenpocket
+			"8837dd9413b1d9b585ee937d27a816590248386d9dbf59f5cd3422dbbb65683e", // robinhood wallet
+			"85db431492aa2e8672e93f4ea7acf10c88b97b867b0d373107af63dc4880f041", // frontier
+			"84b43e8ddfcd18e5fcb5d21e7277733f9cccef76f7d92c836d0e481db0c70c04", // blockchain.com
+			"0b415a746fb9ee99cce155c2ceca0c6f6061b1dbca2d722b3ba16381d0562150", // safepal
+			"38f5d18bd8522c244bdd70cb4a68e0e718865155811c043f052fb9f1c51de662", // bitkeep
+			"9414d5a85c8f4eabc1b5b15ebe0cd399e1a2a9d35643ab0ad22a6e4a32f596f0", // zengo
+			"c286eebc742a537cd1d6818363e9dc53b21759a1e8e5d9b263d0c03ec7703576", // 1inch
+			"8a0ee50d1f22f6651afcae7eb4253e52a3310b90af5daef78a8c4929a9bb99d4", // binance defi wallet
+			"e9ff15be73584489ca4a66f64d32c4537711797e30b6660dbcb71ea72a42b1f4", // exodus
+			"19177a98252e07ddfc9af2083ba8e07ef627cb6103467ffebb3f8f4205fd7927", // ledger live
+			"f5b4eeb6015d66be3f5940a895cbaa49ef3439e518cd771270e6b553b48f31d2", // mew wallet
+			"138f51c8d00ac7b9ac9d8dc75344d096a7dfe370a568aa167eabc0a21830ed98", // alpha wallet
+			"47bb07617af518642f3413a201ec5859faa63acb1dd175ca95085d35d38afb83", // keyring pro
+			"76a3d548a08cf402f5c7d021f24fd2881d767084b387a5325df88bc3d4b6f21b", // lobstr wallet
+			"dceb063851b1833cbb209e3717a0a0b06bf3fb500fe9db8cd3a553e4b1d02137", // onto
+			"7674bb4e353bf52886768a3ddc2a4562ce2f4191c80831291218ebd90f5f5e26", // math wallet
+			"8308656f4548bb81b3508afe355cfbb7f0cb6253d1cc7f998080601f838ecee3", // unstoppable domains
+			"031f0187049b7f96c6f039d1c9c8138ff7a17fd75d38b34350c7182232cc29aa", // obvious
+			"5864e2ced7c293ed18ac35e0db085c09ed567d67346ccb6f58a0327a75137489", // fireblocks
+			"2c81da3add65899baeac53758a07e652eea46dbb5195b8074772c62a77bbf568", // ambire wallet
+			"802a2041afdaf4c7e41a2903e98df333c8835897532699ad370f829390c6900f", // infinity wallet
+			"7424d97904535b14fe34f09f63d8ca66935546f798758dabd5b26c2309f2b1f9", // bridge wallet
+			"dd43441a6368ec9046540c46c5fdc58f79926d17ce61a176444568ca7c970dcd", // internet money wallet
+			"c482dfe368d4f004479977fd88e80dc9e81107f3245d706811581a6dfe69c534", // now wallet
+			"107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c", // bitcoin.com wallet
+			"053ac0ac602e0969736941cf5aa07a3af57396d4601cb521a173a626e1015fb1", // au wallet
+			"2a3c89040ac3b723a1972a33a125b1db11e258a6975d3a61252cd64e6ea5ea01", // coin98 super app
+			"b956da9052132e3dabdcd78feb596d5194c99b7345d8c4bd7a47cabdcb69a25f", // abc wallet
+		};
+
+		#endregion
+
 		#region Editor Variables
 
-		[FormerlySerializedAs("activeChain"), SerializeField, Tooltip("The chain to initialize the SDK with")]
+		[SerializeField,FormerlySerializedAs("activeChain"), Tooltip("The chain to initialize the SDK with")]
 		private string _activeChain = "goerli";
 
-		[FormerlySerializedAs("supportedChains"), SerializeField, Tooltip("Support any chain by adding it to this list from the inspector")]
+		[SerializeField, FormerlySerializedAs("supportedChains"), Tooltip("Support any chain by adding it to this list from the inspector")]
 		private List<ChainData> _supportedChains = new List<ChainData>
 		{
 			new ChainData("ethereum", "1", null),
@@ -56,79 +115,79 @@ namespace Thirdweb
 			new ChainData("sepolia", "11155111", null),
 		};
 
-		[FormerlySerializedAs("clientId"), SerializeField, Tooltip("Thirdweb Client ID (https://thirdweb.com/create-api-key/). Used for default thirdweb services such as RPC, Storage and Account Abstraction.")]
+		[SerializeField,FormerlySerializedAs("clientId"), Tooltip("Thirdweb Client ID (https://thirdweb.com/create-api-key/). Used for default thirdweb services such as RPC, Storage and Account Abstraction.")]
 		private string _clientId;
 
-		[FormerlySerializedAs("initializeOnAwake"), SerializeField, Tooltip("Whether the SDK should initialize on awake or not")]
+		[SerializeField,FormerlySerializedAs("initializeOnAwake"), Tooltip("Whether the SDK should initialize on awake or not")]
 		private bool _initializeOnAwake = true;
 
-		[FormerlySerializedAs("showDebugLogs"), SerializeField, Tooltip("Whether to show thirdweb sdk debug logs")]
+		[SerializeField,FormerlySerializedAs("showDebugLogs"), Tooltip("Whether to show thirdweb sdk debug logs")]
 		private bool _showDebugLogs = true;
 
-		[FormerlySerializedAs("bundleIdOverride"), SerializeField, Tooltip("Optional Bundle ID override for thirdweb services")]
+		[SerializeField,FormerlySerializedAs("bundleIdOverride"), Tooltip("Optional Bundle ID override for thirdweb services")]
 		private string _defaultBundleIdOverride;
 
-		[FormerlySerializedAs("thirdwebConfig"), SerializeField, Tooltip("General Thirdweb Settings")]
+		[SerializeField,FormerlySerializedAs("thirdwebConfig"), Tooltip("General Thirdweb Settings")]
 		private ThirdwebConfig _thirdwebConfig;
 
-		[FormerlySerializedAs("appName"), SerializeField, Tooltip("The name of your app")]
+		[SerializeField,FormerlySerializedAs("appName"), Tooltip("The name of your app")]
 		private string _appName;
 
-		[FormerlySerializedAs("appDescription"), SerializeField, Tooltip("The description of your app")]
+		[SerializeField,FormerlySerializedAs("appDescription"), Tooltip("The description of your app")]
 		private string _appDescription;
 
-		[FormerlySerializedAs("appIcons"), SerializeField, Tooltip("Favicons for your app")]
+		[SerializeField,FormerlySerializedAs("appIcons"), Tooltip("Favicons for your app")]
 		private string[] _appIcons = Array.Empty<string>();
 
-		[FormerlySerializedAs("appUrl"), SerializeField, Tooltip("The url of your app")]
+		[SerializeField,FormerlySerializedAs("appUrl"), Tooltip("The url of your app")]
 		private string _appUrl;
 
-		[FormerlySerializedAs("storageIpfsGatewayUrl"), SerializeField, Tooltip("IPFS Gateway Override")]
+		[SerializeField,FormerlySerializedAs("storageIpfsGatewayUrl"), Tooltip("IPFS Gateway Override")]
 		private string _storageIpfsGatewayUrl;
 
-		[FormerlySerializedAs("relayerUrl"), SerializeField, Tooltip("Autotask URL")]
+		[SerializeField,FormerlySerializedAs("relayerUrl"), Tooltip("Autotask URL")]
 		private string _relayerUrl;
 
-		[FormerlySerializedAs("forwarderAddress"), SerializeField, Tooltip("Forwarders can be found here https://github.com/thirdweb-dev/ozdefender-autotask")]
+		[SerializeField,FormerlySerializedAs("forwarderAddress"), Tooltip("Forwarders can be found here https://github.com/thirdweb-dev/ozdefender-autotask")]
 		private string _forwarderAddress;
 
-		[FormerlySerializedAs("forwarderDomainOverride"), SerializeField, Tooltip("Forwarder Domain Override (Defaults to GSNv2 Forwarder if left empty)")]
+		[SerializeField,FormerlySerializedAs("forwarderDomainOverride"), Tooltip("Forwarder Domain Override (Defaults to GSNv2 Forwarder if left empty)")]
 		private string _forwarderDomainOverride;
 
-		[FormerlySerializedAs("forwaderVersionOverride"), SerializeField, Tooltip("Forwarder Version (Defaults to 0.0.1 if left empty)")]
+		[SerializeField,FormerlySerializedAs("forwaderVersionOverride"), Tooltip("Forwarder Version (Defaults to 0.0.1 if left empty)")]
 		private string _forwaderVersionOverride;
 
-		[FormerlySerializedAs("walletConnectProjectId"), SerializeField, Tooltip("WalletConnect Project ID (https://cloud.walletconnect.com/app)")]
+		[SerializeField,FormerlySerializedAs("walletConnectProjectId"), Tooltip("WalletConnect Project ID (https://cloud.walletconnect.com/app)")]
 		private string _walletConnectProjectId;
 
-		[FormerlySerializedAs("walletConnectExplorerRecommendedWalletIds"), SerializeField, Tooltip("Wallets to show in the WalletConnect Modal (https://walletconnect.com/explorer)")]
-		private string[] _walletConnectExplorerRecommendedWalletIds = Array.Empty<string>();
+		[SerializeField, FormerlySerializedAs("walletConnectExplorerRecommendedWalletIds"), Tooltip("Wallets to show in the WalletConnect Modal (https://walletconnect.com/explorer)")]
+		private string[] _overrideWalletConnectExplorerRecommendedWalletIds = Array.Empty<string>();
 
-		[FormerlySerializedAs("factoryAddress"), SerializeField, Tooltip("Factory Contract Address")]
+		[SerializeField,FormerlySerializedAs("factoryAddress"), Tooltip("Factory Contract Address")]
 		private string _factoryAddress;
 
-		[FormerlySerializedAs("gasless"), SerializeField, Tooltip("Whether it should use a paymaster for gasless transactions or not")]
+		[SerializeField,FormerlySerializedAs("gasless"), Tooltip("Whether it should use a paymaster for gasless transactions or not")]
 		private bool _gasless;
 
-		[FormerlySerializedAs("deployOnSign"), SerializeField, Tooltip("Indicates whether to deploy the smart wallet upon signing any type of message.")]
+		[SerializeField,FormerlySerializedAs("deployOnSign"), Tooltip("Indicates whether to deploy the smart wallet upon signing any type of message.")]
 		private bool _deployOnSign;
 
-		[FormerlySerializedAs("bundlerUrl"), SerializeField, Tooltip("Optional - If you want to use a custom relayer, you can provide the URL here")]
+		[SerializeField,FormerlySerializedAs("bundlerUrl"), Tooltip("Optional - If you want to use a custom relayer, you can provide the URL here")]
 		private string _bundlerUrl;
 
-		[FormerlySerializedAs("paymasterUrl"), SerializeField, Tooltip("Optional - If you want to use a custom paymaster, you can provide the URL here")]
+		[SerializeField,FormerlySerializedAs("paymasterUrl"), Tooltip("Optional - If you want to use a custom paymaster, you can provide the URL here")]
 		private string _paymasterUrl;
 
-		[FormerlySerializedAs("entryPointAddress"), SerializeField, Tooltip("Optional - If you want to use a custom entry point, you can provide the contract address here")]
+		[SerializeField,FormerlySerializedAs("entryPointAddress"), Tooltip("Optional - If you want to use a custom entry point, you can provide the contract address here")]
 		private string _entryPointAddress;
 
-		[FormerlySerializedAs("WalletConnectPrefab"), SerializeField, Tooltip("Instantiates the WalletConnect SDK for Native platforms.")]
+		[SerializeField,FormerlySerializedAs("WalletConnectPrefab"), Tooltip("Instantiates the WalletConnect SDK for Native platforms.")]
 		private GameObject _walletConnectPrefab;
 
-		[FormerlySerializedAs("MetamaskPrefab"), SerializeField, Tooltip("Instantiates the Metamask SDK for Native platforms.")]
+		[SerializeField,FormerlySerializedAs("MetamaskPrefab"), Tooltip("Instantiates the Metamask SDK for Native platforms.")]
 		private GameObject _metamaskPrefab;
 
-		[FormerlySerializedAs("EmbeddedWalletPrefab"), SerializeField, Tooltip("Instantiates the EmbeddedWallet SDK for Native platforms.")]
+		[SerializeField,FormerlySerializedAs("EmbeddedWalletPrefab"), Tooltip("Instantiates the EmbeddedWallet SDK for Native platforms.")]
 		private GameObject _embeddedWalletPrefab;
 
 		#endregion
@@ -168,10 +227,14 @@ namespace Thirdweb
 			ThirdwebSDK.Options options = new ThirdwebSDK.Options();
 
 			// Set up Client ID and Bundle ID
-			options.clientId = string.IsNullOrEmpty(_clientId) ? null : _clientId;
+			options.clientId = string.IsNullOrEmpty(_clientId) 
+				? null 
+				: _clientId;
 
 			_bundleIdOverride = overrideBundleId;
-			options.bundleId = string.IsNullOrEmpty(overrideBundleId) ? Application.identifier.ToLower() : overrideBundleId;
+			options.bundleId = string.IsNullOrEmpty(overrideBundleId) 
+				? Application.identifier.ToLower() 
+				: overrideBundleId;
 
 			// Set up supported chains
 			_activeChain = chainIdentifier;
@@ -195,8 +258,12 @@ namespace Thirdweb
 				{
 					throw new UnityException($"Could not add {chainData.Identifier} to supported chains, RPC overrides must start with https:// or be left empty to use thirdweb RPCs!");
 				}
-
-				string rpc = string.IsNullOrEmpty(chainData.RPCOverride) ? (string.IsNullOrEmpty(_clientId) ? $"https://{chainData.ChainId}.rpc.thirdweb.com/" : $"https://{chainData.ChainId}.rpc.thirdweb.com/{_clientId}") : chainData.RPCOverride;
+				
+				string rpc = string.IsNullOrEmpty(chainData.RPCOverride) 
+					? (string.IsNullOrEmpty(_clientId) 
+						? $"https://{chainData.ChainId}.rpc.thirdweb.com/" 
+						: $"https://{chainData.ChainId}.rpc.thirdweb.com/{_clientId}") 
+					: chainData.RPCOverride;
 
 				if(new Uri(rpc).Host.EndsWith(".thirdweb.com"))
 				{
@@ -249,24 +316,25 @@ namespace Thirdweb
 
 			options.wallet = new ThirdwebSDK.WalletOptions
 			{
-				appName = string.IsNullOrEmpty(_appName) ? "thirdweb powered dApp" : _appName,
-				appDescription = string.IsNullOrEmpty(_appDescription) ? "thirdweb powered dApp" : _appDescription,
+				appName = string.IsNullOrEmpty(_appName) 
+					? DefaultAppName 
+					: _appName,
+				appDescription = string.IsNullOrEmpty(_appDescription) 
+					? DefaultAppDescription 
+					: _appDescription,
 				appIcons = _appIcons == null || _appIcons.Length == 0 || string.IsNullOrEmpty(_appIcons[0]) 
-					? new[]
-					{
-						"https://thirdweb.com/favicon.ico"
-					} 
+					? DefaultAppIcons 
 					: _appIcons,
 				appUrl = string.IsNullOrEmpty(_appUrl) 
-					? "https://thirdweb.com" 
+					? DefaultAppURL
 					: _appUrl,
 				walletConnectProjectId = string.IsNullOrEmpty(_walletConnectProjectId) 
-					? "145769e410f16970a79ff77b2d89a1e0" 
+					? DefaultWalletConnectProjectId 
 					: _walletConnectProjectId,
-				walletConnectExplorerRecommendedWalletIds = GetWalletConnectExplorerRecommendedWalletIds(),
 				customScheme = string.IsNullOrEmpty(_thirdwebConfig.customScheme) 
 					? null 
 					: _thirdwebConfig.customScheme,
+				walletConnectExplorerRecommendedWalletIds = GetWalletConnectExplorerRecommendedWalletIds(),
 			};
 
 			options.smartWalletConfig = string.IsNullOrEmpty(_factoryAddress) ? null : new ThirdwebSDK.SmartWalletConfig
@@ -275,10 +343,10 @@ namespace Thirdweb
 				gasless = _gasless,
 				deployOnSign = _deployOnSign,
 				bundlerUrl = string.IsNullOrEmpty(_bundlerUrl) 
-					? $"https://{activeChainId}.bundler.thirdweb.com" 
+					? GetBundlerUrlForChainId(activeChainId) 
 					: _bundlerUrl,
 				paymasterUrl = string.IsNullOrEmpty(_paymasterUrl) 
-					? $"https://{activeChainId}.bundler.thirdweb.com" 
+					? GetPaymasterUrlForChainId(activeChainId)
 					: _paymasterUrl,
 				entryPointAddress = string.IsNullOrEmpty(_entryPointAddress) 
 					? Constants.DEFAULT_ENTRYPOINT_ADDRESS 
@@ -286,7 +354,6 @@ namespace Thirdweb
 			};
 
 			// Pass active chain rpc and chainId
-
 			_sdk = new ThirdwebSDK(activeChainRpc, BigInteger.Parse(activeChainId), options);
 		}
 
@@ -308,54 +375,21 @@ namespace Thirdweb
 
 		#region Private Methods
 
+		private string GetBundlerUrlForChainId(string chainId)
+		{
+			return $"https://{chainId}.bundler.thirdweb.com";
+		}
+
+		private string GetPaymasterUrlForChainId(string chainId)
+		{
+			return $"https://{chainId}.bundler.thirdweb.com";
+		}
+		
 		private string[] GetWalletConnectExplorerRecommendedWalletIds()
 		{
-			return _walletConnectExplorerRecommendedWalletIds == null || _walletConnectExplorerRecommendedWalletIds.Length == 0 || string.IsNullOrEmpty(_walletConnectExplorerRecommendedWalletIds[0]) 
-				? new[]
-				{
-					"c57ca95b47569778a828d19178114f4db188b89b763c899ba0be274e97267d96", // metamask
-					"4622a2b2d6af1c9844944291e5e7351a6aa24cd7b23099efac1b2fd875da31a0", // trustwallet
-					"225affb176778569276e484e1b92637ad061b01e13a048b35a9d280c3b58970f", // safe
-					"1ae92b26df02f0abca6304df07debccd18262fdf5fe82daa81593582dac9a369", // rainbow
-					"a797aa35c0fadbfc1a53e7f675162ed5226968b44a19ee3d24385c64d1d3c393", // phantom
-					"c03dfee351b6fcc421b4494ea33b9d4b92a984f87aa76d1663bb28705e95034a", // uniswap
-					"ecc4036f814562b41a5268adc86270fba1365471402006302e70169465b7ac18", // zerion
-					"ef333840daf915aafdc4a004525502d6d49d77bd9c65e0642dbaefb3c2893bef", // imtoken
-					"bc949c5d968ae81310268bf9193f9c9fb7bb4e1283e1284af8f2bd4992535fd6", // argent
-					"74f8092562bd79675e276d8b2062a83601a4106d30202f2d509195e30e19673d", // spot
-					"afbd95522f4041c71dd4f1a065f971fd32372865b416f95a0b1db759ae33f2a7", // omni
-					"f2436c67184f158d1beda5df53298ee84abfc367581e4505134b5bcf5f46697d", // crypto.com
-					"20459438007b75f4f4acb98bf29aa3b800550309646d375da5fd4aac6c2a2c66", // tokenpocket
-					"8837dd9413b1d9b585ee937d27a816590248386d9dbf59f5cd3422dbbb65683e", // robinhood wallet
-					"85db431492aa2e8672e93f4ea7acf10c88b97b867b0d373107af63dc4880f041", // frontier
-					"84b43e8ddfcd18e5fcb5d21e7277733f9cccef76f7d92c836d0e481db0c70c04", // blockchain.com
-					"0b415a746fb9ee99cce155c2ceca0c6f6061b1dbca2d722b3ba16381d0562150", // safepal
-					"38f5d18bd8522c244bdd70cb4a68e0e718865155811c043f052fb9f1c51de662", // bitkeep
-					"9414d5a85c8f4eabc1b5b15ebe0cd399e1a2a9d35643ab0ad22a6e4a32f596f0", // zengo
-					"c286eebc742a537cd1d6818363e9dc53b21759a1e8e5d9b263d0c03ec7703576", // 1inch
-					"8a0ee50d1f22f6651afcae7eb4253e52a3310b90af5daef78a8c4929a9bb99d4", // binance defi wallet
-					"e9ff15be73584489ca4a66f64d32c4537711797e30b6660dbcb71ea72a42b1f4", // exodus
-					"19177a98252e07ddfc9af2083ba8e07ef627cb6103467ffebb3f8f4205fd7927", // ledger live
-					"f5b4eeb6015d66be3f5940a895cbaa49ef3439e518cd771270e6b553b48f31d2", // mew wallet
-					"138f51c8d00ac7b9ac9d8dc75344d096a7dfe370a568aa167eabc0a21830ed98", // alpha wallet
-					"47bb07617af518642f3413a201ec5859faa63acb1dd175ca95085d35d38afb83", // keyring pro
-					"76a3d548a08cf402f5c7d021f24fd2881d767084b387a5325df88bc3d4b6f21b", // lobstr wallet
-					"dceb063851b1833cbb209e3717a0a0b06bf3fb500fe9db8cd3a553e4b1d02137", // onto
-					"7674bb4e353bf52886768a3ddc2a4562ce2f4191c80831291218ebd90f5f5e26", // math wallet
-					"8308656f4548bb81b3508afe355cfbb7f0cb6253d1cc7f998080601f838ecee3", // unstoppable domains
-					"031f0187049b7f96c6f039d1c9c8138ff7a17fd75d38b34350c7182232cc29aa", // obvious
-					"5864e2ced7c293ed18ac35e0db085c09ed567d67346ccb6f58a0327a75137489", // fireblocks
-					"2c81da3add65899baeac53758a07e652eea46dbb5195b8074772c62a77bbf568", // ambire wallet
-					"802a2041afdaf4c7e41a2903e98df333c8835897532699ad370f829390c6900f", // infinity wallet
-					"7424d97904535b14fe34f09f63d8ca66935546f798758dabd5b26c2309f2b1f9", // bridge wallet
-					"dd43441a6368ec9046540c46c5fdc58f79926d17ce61a176444568ca7c970dcd", // internet money wallet
-					"c482dfe368d4f004479977fd88e80dc9e81107f3245d706811581a6dfe69c534", // now wallet
-					"107bb20463699c4e614d3a2fb7b961e66f48774cb8f6d6c1aee789853280972c", // bitcoin.com wallet
-					"053ac0ac602e0969736941cf5aa07a3af57396d4601cb521a173a626e1015fb1", // au wallet
-					"2a3c89040ac3b723a1972a33a125b1db11e258a6975d3a61252cd64e6ea5ea01", // coin98 super app
-					"b956da9052132e3dabdcd78feb596d5194c99b7345d8c4bd7a47cabdcb69a25f", // abc wallet
-				} 
-				: _walletConnectExplorerRecommendedWalletIds;
+			return _overrideWalletConnectExplorerRecommendedWalletIds == null || _overrideWalletConnectExplorerRecommendedWalletIds.Length == 0 || string.IsNullOrEmpty(_overrideWalletConnectExplorerRecommendedWalletIds[0]) 
+				? DefaultWalletConnectExplorerRecommendedWalletIds
+				: _overrideWalletConnectExplorerRecommendedWalletIds;
 		}
 
 		#endregion
