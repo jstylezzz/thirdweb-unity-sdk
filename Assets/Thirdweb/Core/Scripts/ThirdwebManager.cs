@@ -29,6 +29,8 @@ namespace Thirdweb
 
 		public string BundleIdOverride => _bundleIdOverride;
 
+		public string ClientId => _clientId;
+
 		#endregion
 
 		#region Consts
@@ -92,7 +94,7 @@ namespace Thirdweb
 
 		#region Editor Variables
 
-		[SerializeField,FormerlySerializedAs("activeChain"), Tooltip("The chain to initialize the SDK with")]
+		[SerializeField, FormerlySerializedAs("activeChain"), Tooltip("The chain to initialize the SDK with")]
 		private string _activeChain = "goerli";
 
 		[SerializeField, FormerlySerializedAs("supportedChains"), Tooltip("Support any chain by adding it to this list from the inspector")]
@@ -115,79 +117,79 @@ namespace Thirdweb
 			new ChainData("sepolia", "11155111", null),
 		};
 
-		[SerializeField,FormerlySerializedAs("clientId"), Tooltip("Thirdweb Client ID (https://thirdweb.com/create-api-key/). Used for default thirdweb services such as RPC, Storage and Account Abstraction.")]
+		[SerializeField, FormerlySerializedAs("clientId"), Tooltip("Thirdweb Client ID (https://thirdweb.com/create-api-key/). Used for default thirdweb services such as RPC, Storage and Account Abstraction.")]
 		private string _clientId;
 
-		[SerializeField,FormerlySerializedAs("initializeOnAwake"), Tooltip("Whether the SDK should initialize on awake or not")]
+		[SerializeField, FormerlySerializedAs("initializeOnAwake"), Tooltip("Whether the SDK should initialize on awake or not")]
 		private bool _initializeOnAwake = true;
 
-		[SerializeField,FormerlySerializedAs("showDebugLogs"), Tooltip("Whether to show thirdweb sdk debug logs")]
+		[SerializeField, FormerlySerializedAs("showDebugLogs"), Tooltip("Whether to show thirdweb sdk debug logs")]
 		private bool _showDebugLogs = true;
 
-		[SerializeField,FormerlySerializedAs("bundleIdOverride"), Tooltip("Optional Bundle ID override for thirdweb services")]
+		[SerializeField, FormerlySerializedAs("bundleIdOverride"), Tooltip("Optional Bundle ID override for thirdweb services")]
 		private string _defaultBundleIdOverride;
 
-		[SerializeField,FormerlySerializedAs("thirdwebConfig"), Tooltip("General Thirdweb Settings")]
+		[SerializeField, FormerlySerializedAs("thirdwebConfig"), Tooltip("General Thirdweb Settings")]
 		private ThirdwebConfig _thirdwebConfig;
 
-		[SerializeField,FormerlySerializedAs("appName"), Tooltip("The name of your app")]
+		[SerializeField, FormerlySerializedAs("appName"), Tooltip("The name of your app")]
 		private string _appName;
 
-		[SerializeField,FormerlySerializedAs("appDescription"), Tooltip("The description of your app")]
+		[SerializeField, FormerlySerializedAs("appDescription"), Tooltip("The description of your app")]
 		private string _appDescription;
 
-		[SerializeField,FormerlySerializedAs("appIcons"), Tooltip("Favicons for your app")]
+		[SerializeField, FormerlySerializedAs("appIcons"), Tooltip("Favicons for your app")]
 		private string[] _appIcons = Array.Empty<string>();
 
-		[SerializeField,FormerlySerializedAs("appUrl"), Tooltip("The url of your app")]
+		[SerializeField, FormerlySerializedAs("appUrl"), Tooltip("The url of your app")]
 		private string _appUrl;
 
-		[SerializeField,FormerlySerializedAs("storageIpfsGatewayUrl"), Tooltip("IPFS Gateway Override")]
+		[SerializeField, FormerlySerializedAs("storageIpfsGatewayUrl"), Tooltip("IPFS Gateway Override")]
 		private string _storageIpfsGatewayUrl;
 
-		[SerializeField,FormerlySerializedAs("relayerUrl"), Tooltip("Autotask URL")]
+		[SerializeField, FormerlySerializedAs("relayerUrl"), Tooltip("Autotask URL")]
 		private string _relayerUrl;
 
-		[SerializeField,FormerlySerializedAs("forwarderAddress"), Tooltip("Forwarders can be found here https://github.com/thirdweb-dev/ozdefender-autotask")]
+		[SerializeField, FormerlySerializedAs("forwarderAddress"), Tooltip("Forwarders can be found here https://github.com/thirdweb-dev/ozdefender-autotask")]
 		private string _forwarderAddress;
 
-		[SerializeField,FormerlySerializedAs("forwarderDomainOverride"), Tooltip("Forwarder Domain Override (Defaults to GSNv2 Forwarder if left empty)")]
+		[SerializeField, FormerlySerializedAs("forwarderDomainOverride"), Tooltip("Forwarder Domain Override (Defaults to GSNv2 Forwarder if left empty)")]
 		private string _forwarderDomainOverride;
 
-		[SerializeField,FormerlySerializedAs("forwaderVersionOverride"), Tooltip("Forwarder Version (Defaults to 0.0.1 if left empty)")]
+		[SerializeField, FormerlySerializedAs("forwaderVersionOverride"), Tooltip("Forwarder Version (Defaults to 0.0.1 if left empty)")]
 		private string _forwaderVersionOverride;
 
-		[SerializeField,FormerlySerializedAs("walletConnectProjectId"), Tooltip("WalletConnect Project ID (https://cloud.walletconnect.com/app)")]
+		[SerializeField, FormerlySerializedAs("walletConnectProjectId"), Tooltip("WalletConnect Project ID (https://cloud.walletconnect.com/app)")]
 		private string _walletConnectProjectId;
 
 		[SerializeField, FormerlySerializedAs("walletConnectExplorerRecommendedWalletIds"), Tooltip("Wallets to show in the WalletConnect Modal (https://walletconnect.com/explorer)")]
 		private string[] _overrideWalletConnectExplorerRecommendedWalletIds = Array.Empty<string>();
 
-		[SerializeField,FormerlySerializedAs("factoryAddress"), Tooltip("Factory Contract Address")]
+		[SerializeField, FormerlySerializedAs("factoryAddress"), Tooltip("Factory Contract Address")]
 		private string _factoryAddress;
 
-		[SerializeField,FormerlySerializedAs("gasless"), Tooltip("Whether it should use a paymaster for gasless transactions or not")]
+		[SerializeField, FormerlySerializedAs("gasless"), Tooltip("Whether it should use a paymaster for gasless transactions or not")]
 		private bool _gasless;
 
-		[SerializeField,FormerlySerializedAs("deployOnSign"), Tooltip("Indicates whether to deploy the smart wallet upon signing any type of message.")]
+		[SerializeField, FormerlySerializedAs("deployOnSign"), Tooltip("Indicates whether to deploy the smart wallet upon signing any type of message.")]
 		private bool _deployOnSign;
 
-		[SerializeField,FormerlySerializedAs("bundlerUrl"), Tooltip("Optional - If you want to use a custom relayer, you can provide the URL here")]
+		[SerializeField, FormerlySerializedAs("bundlerUrl"), Tooltip("Optional - If you want to use a custom relayer, you can provide the URL here")]
 		private string _bundlerUrl;
 
-		[SerializeField,FormerlySerializedAs("paymasterUrl"), Tooltip("Optional - If you want to use a custom paymaster, you can provide the URL here")]
+		[SerializeField, FormerlySerializedAs("paymasterUrl"), Tooltip("Optional - If you want to use a custom paymaster, you can provide the URL here")]
 		private string _paymasterUrl;
 
-		[SerializeField,FormerlySerializedAs("entryPointAddress"), Tooltip("Optional - If you want to use a custom entry point, you can provide the contract address here")]
+		[SerializeField, FormerlySerializedAs("entryPointAddress"), Tooltip("Optional - If you want to use a custom entry point, you can provide the contract address here")]
 		private string _entryPointAddress;
 
-		[SerializeField,FormerlySerializedAs("WalletConnectPrefab"), Tooltip("Instantiates the WalletConnect SDK for Native platforms.")]
+		[SerializeField, FormerlySerializedAs("WalletConnectPrefab"), Tooltip("Instantiates the WalletConnect SDK for Native platforms.")]
 		private GameObject _walletConnectPrefab;
 
-		[SerializeField,FormerlySerializedAs("MetamaskPrefab"), Tooltip("Instantiates the Metamask SDK for Native platforms.")]
+		[SerializeField, FormerlySerializedAs("MetamaskPrefab"), Tooltip("Instantiates the Metamask SDK for Native platforms.")]
 		private GameObject _metamaskPrefab;
 
-		[SerializeField,FormerlySerializedAs("EmbeddedWalletPrefab"), Tooltip("Instantiates the EmbeddedWallet SDK for Native platforms.")]
+		[SerializeField, FormerlySerializedAs("EmbeddedWalletPrefab"), Tooltip("Instantiates the EmbeddedWallet SDK for Native platforms.")]
 		private GameObject _embeddedWalletPrefab;
 
 		#endregion
@@ -221,18 +223,23 @@ namespace Thirdweb
 			}
 		}
 		
-		public void Initialize(string chainIdentifier, string overrideBundleId = null)
+		public void Initialize(string chainIdentifier, string overrideBundleId = null, string overrideClientId = null)
 		{
 			// Pass supported chains with replaced RPCs
 			ThirdwebSDK.Options options = new ThirdwebSDK.Options();
 
 			// Set up Client ID and Bundle ID
-			options.clientId = string.IsNullOrEmpty(_clientId) 
+			if(!string.IsNullOrWhiteSpace(overrideClientId))
+			{
+				_clientId = overrideClientId;
+			}
+			
+			options.clientId = string.IsNullOrWhiteSpace(_clientId) 
 				? null 
 				: _clientId;
 
 			_bundleIdOverride = overrideBundleId;
-			options.bundleId = string.IsNullOrEmpty(overrideBundleId) 
+			options.bundleId = string.IsNullOrWhiteSpace(overrideBundleId) 
 				? Application.identifier.ToLower() 
 				: overrideBundleId;
 
@@ -244,23 +251,23 @@ namespace Thirdweb
 			List<ThirdwebChainData> supportedChainData = new List<ThirdwebChainData>();
 			foreach(ChainData chainData in _supportedChains)
 			{
-				if(string.IsNullOrEmpty(chainData.Identifier))
+				if(string.IsNullOrWhiteSpace(chainData.Identifier))
 				{
 					throw new UnityException("You must provide a valid chain identifier! See https://thirdweb.com/dashboard/rpc for a list of supported chains.");
 				}
 
-				if(string.IsNullOrEmpty(chainData.ChainId) || !BigInteger.TryParse(chainData.ChainId, out _))
+				if(string.IsNullOrWhiteSpace(chainData.ChainId) || !BigInteger.TryParse(chainData.ChainId, out _))
 				{
 					throw new UnityException($"Could not add {chainData.Identifier} to supported chains, you must provide a valid chain ID!");
 				}
 
-				if(!string.IsNullOrEmpty(chainData.RPCOverride) && !chainData.RPCOverride.StartsWith("https://"))
+				if(!string.IsNullOrWhiteSpace(chainData.RPCOverride) && !chainData.RPCOverride.StartsWith("https://"))
 				{
 					throw new UnityException($"Could not add {chainData.Identifier} to supported chains, RPC overrides must start with https:// or be left empty to use thirdweb RPCs!");
 				}
 				
-				string rpc = string.IsNullOrEmpty(chainData.RPCOverride) 
-					? (string.IsNullOrEmpty(_clientId) 
+				string rpc = string.IsNullOrWhiteSpace(chainData.RPCOverride) 
+					? (string.IsNullOrWhiteSpace(_clientId) 
 						? $"https://{chainData.ChainId}.rpc.thirdweb.com/" 
 						: $"https://{chainData.ChainId}.rpc.thirdweb.com/{_clientId}") 
 					: chainData.RPCOverride;
@@ -289,7 +296,7 @@ namespace Thirdweb
 			options.supportedChains = supportedChainData.ToArray();
 
 			// Set up storage and gasless options (if any)
-			if(!string.IsNullOrEmpty(_storageIpfsGatewayUrl))
+			if(!string.IsNullOrWhiteSpace(_storageIpfsGatewayUrl))
 			{
 				options.storage = new ThirdwebSDK.StorageOptions
 				{
@@ -297,7 +304,7 @@ namespace Thirdweb
 				};
 			}
 
-			if(!string.IsNullOrEmpty(_relayerUrl) && !string.IsNullOrEmpty(_forwarderAddress))
+			if(!string.IsNullOrWhiteSpace(_relayerUrl) && !string.IsNullOrWhiteSpace(_forwarderAddress))
 			{
 				options.gasless = new ThirdwebSDK.GaslessOptions
 				{
@@ -305,8 +312,8 @@ namespace Thirdweb
 					{
 						relayerUrl = _relayerUrl,
 						relayerForwarderAddress = _forwarderAddress,
-						domainName = string.IsNullOrEmpty(_forwarderDomainOverride) ? "GSNv2 Forwarder" : _forwarderDomainOverride,
-						domainVersion = string.IsNullOrEmpty(_forwaderVersionOverride) ? "0.0.1" : _forwaderVersionOverride
+						domainName = string.IsNullOrWhiteSpace(_forwarderDomainOverride) ? "GSNv2 Forwarder" : _forwarderDomainOverride,
+						domainVersion = string.IsNullOrWhiteSpace(_forwaderVersionOverride) ? "0.0.1" : _forwaderVersionOverride
 					}
 				};
 			}
@@ -316,39 +323,39 @@ namespace Thirdweb
 
 			options.wallet = new ThirdwebSDK.WalletOptions
 			{
-				appName = string.IsNullOrEmpty(_appName) 
+				appName = string.IsNullOrWhiteSpace(_appName) 
 					? DefaultAppName 
 					: _appName,
-				appDescription = string.IsNullOrEmpty(_appDescription) 
+				appDescription = string.IsNullOrWhiteSpace(_appDescription) 
 					? DefaultAppDescription 
 					: _appDescription,
-				appIcons = _appIcons == null || _appIcons.Length == 0 || string.IsNullOrEmpty(_appIcons[0]) 
+				appIcons = _appIcons == null || _appIcons.Length == 0 || string.IsNullOrWhiteSpace(_appIcons[0]) 
 					? DefaultAppIcons 
 					: _appIcons,
-				appUrl = string.IsNullOrEmpty(_appUrl) 
+				appUrl = string.IsNullOrWhiteSpace(_appUrl) 
 					? DefaultAppURL
 					: _appUrl,
-				walletConnectProjectId = string.IsNullOrEmpty(_walletConnectProjectId) 
+				walletConnectProjectId = string.IsNullOrWhiteSpace(_walletConnectProjectId) 
 					? DefaultWalletConnectProjectId 
 					: _walletConnectProjectId,
-				customScheme = string.IsNullOrEmpty(_thirdwebConfig.customScheme) 
+				customScheme = string.IsNullOrWhiteSpace(_thirdwebConfig.customScheme) 
 					? null 
 					: _thirdwebConfig.customScheme,
 				walletConnectExplorerRecommendedWalletIds = GetWalletConnectExplorerRecommendedWalletIds(),
 			};
 
-			options.smartWalletConfig = string.IsNullOrEmpty(_factoryAddress) ? null : new ThirdwebSDK.SmartWalletConfig
+			options.smartWalletConfig = string.IsNullOrWhiteSpace(_factoryAddress) ? null : new ThirdwebSDK.SmartWalletConfig
 			{
 				factoryAddress = _factoryAddress,
 				gasless = _gasless,
 				deployOnSign = _deployOnSign,
-				bundlerUrl = string.IsNullOrEmpty(_bundlerUrl) 
+				bundlerUrl = string.IsNullOrWhiteSpace(_bundlerUrl) 
 					? GetBundlerUrlForChainId(activeChainId) 
 					: _bundlerUrl,
-				paymasterUrl = string.IsNullOrEmpty(_paymasterUrl) 
+				paymasterUrl = string.IsNullOrWhiteSpace(_paymasterUrl) 
 					? GetPaymasterUrlForChainId(activeChainId)
 					: _paymasterUrl,
-				entryPointAddress = string.IsNullOrEmpty(_entryPointAddress) 
+				entryPointAddress = string.IsNullOrWhiteSpace(_entryPointAddress) 
 					? Constants.DEFAULT_ENTRYPOINT_ADDRESS 
 					: _entryPointAddress,
 			};
@@ -371,6 +378,11 @@ namespace Thirdweb
 			_activeChain = newChain;
 		}
 
+		public void ToggleDebugLogs(bool toggle)
+		{
+			_showDebugLogs = toggle;
+		}
+
 		#endregion
 
 		#region Private Methods
@@ -387,7 +399,7 @@ namespace Thirdweb
 		
 		private string[] GetWalletConnectExplorerRecommendedWalletIds()
 		{
-			return _overrideWalletConnectExplorerRecommendedWalletIds == null || _overrideWalletConnectExplorerRecommendedWalletIds.Length == 0 || string.IsNullOrEmpty(_overrideWalletConnectExplorerRecommendedWalletIds[0]) 
+			return _overrideWalletConnectExplorerRecommendedWalletIds == null || _overrideWalletConnectExplorerRecommendedWalletIds.Length == 0 || string.IsNullOrWhiteSpace(_overrideWalletConnectExplorerRecommendedWalletIds[0]) 
 				? DefaultWalletConnectExplorerRecommendedWalletIds
 				: _overrideWalletConnectExplorerRecommendedWalletIds;
 		}
